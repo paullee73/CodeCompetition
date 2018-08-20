@@ -16,5 +16,14 @@ class Solution
 
     void topSortUtil(Vertex vertex, stack<Vertex *> stack, unordered_set<Vertex *> visited)
     {
+        visited.add(vertex);
+        for (Vertex *child : vertex.children())
+        {
+            if (!visited.find(child))
+            {
+                topSortUtil(child, stack, visited);
+            }
         }
+        stack.push(vertex);
+    }
 };
