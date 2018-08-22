@@ -3,76 +3,41 @@
 #include <iostream>
 #include <vector>
 #include <queue>
+#include <iostream>
 
 using namespace std;
-class Solution
+
+string insertCharAt(string word, char c, int i)
 {
-  public:
-    int helper(int smaller, int bigger, int memo[])
-    {
-        if (smaller == 0)
-        {
-            return 0;
-        }
-        if (smaller == 1)
-        {
-            return bigger;
-        }
-        if (memo[smaller] > 0)
-        {
-            return memo[smaller];
-        }
+    string start = word.substr(0, i);
+    string end = word.substr(i, word.size());
+    return start + c + end;
+}
 
-        int s = s / 2;
-        int side1 = helper(s, bigger, memo);
-        int side2 = side1;
-        if (smaller % 2 == 1)
-        {
-            return helper(smaller - s, bigger, memo);
-        }
-        memo[smaller] = side1 + side2;
-        return memo[smaller];
-    }
-
-    int recursiveMultiply(int a, int b)
-    {
-        int bigger = a > b ? a : b;
-        int smaller = a < b ? a : b;
-        int memo[smaller + 1];
-        return helper(smaller, bigger, memo);
-    }
-};
-
-class OptimizedSolution
+vector<string> permutations(string s)
 {
-  public:
-    int recursiveMultiply(int a, int b)
+    vector<string> permutations;
+    if (s.size() == 0)
     {
-        int bigger = a > b ? a : b;
-        int smaller = a < b ? a : b;
-        return helper(smaller, bigger);
+        permutations.push_back("");
+        return permutations;
     }
-
-    int helper(int smaller, int bigger)
+    char first = s[0];
+    string remainder = s.substr(1, s.size());
+    vector<string> words = permutations(remainder);
+    for (string word : words)
     {
-        if (smaller == 0)
+        for (int j = 0; j <= word.length(); j++)
         {
-            return 0;
-        }
-        if (smaller == 1)
-        {
-            return bigger;
-        }
-        int s = smaller / 2;
-        int halfProd = helper(s, bigger);
-
-        if (smaller % 2 == 0)
-        {
-            return halfProd + halfProd;
-        }
-        else
-        {
-            return helfProd + halfProd + bigger;
+            string s = insertCharAt(word, first, j);
+            permutations.push_back(s);
         }
     }
+    return permutations;
+}
+
+int main()
+{
+    vector<string> asdf = permutations("123");
+    return 0;
 }
