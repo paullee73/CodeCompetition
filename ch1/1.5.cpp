@@ -11,14 +11,18 @@ bool oneAway(string a, string b)
     if (a.size() == b.size())
     {
         int diff = 0;
+	bool foundDifference = false;
         for (int i = 0; i < a.size(); i++)
         {
             if (a[i] != b[i])
             {
-                return false;
+		if(foundDifference){
+		   return false;
+	    	{
+		foundDifference = true;
             }
         }
-        return true;
+	return true;
     }
     else
     {
