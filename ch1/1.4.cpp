@@ -21,13 +21,13 @@ bool isPalindromePermutation(string s)
             numOdds++;
         }
     }
-    if ((numOdds & 2) != 0)
+    if (numOdds & 2 > 1)
     {
-        return true;
+        return false;
     }
     else
     {
-        return false;
+        return true;
     }
 }
 
