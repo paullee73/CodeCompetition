@@ -1,7 +1,7 @@
 class Solution
 {
   public:
-    TreeNode *topSort(GraphNode *graph)
+    TreeNode* topSort(GraphNode *graph)
     {
         stack<Vertex *> stack;
         unordered_set<Vertex *> visited;
