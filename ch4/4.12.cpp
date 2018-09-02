@@ -51,7 +51,7 @@ class OptimizedSolution
         }
         runningSum += node->data;
         int sum = runningSum - targetSum;
-        int totalPaths = pathCount[sum] ? sum : 0;
+        int totalPaths = pathCount[sum] ? pathCount[sum] : 0;
 
         if (runningSum == targetSum)
         {
