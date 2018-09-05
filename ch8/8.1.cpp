@@ -17,6 +17,9 @@ class Solution
         {
             return 1;
         }
+	if (arr[steps] > 0){
+	   return arr[steps];
+	}
         if (arr[steps] == 0)
         {
             arr[steps] = helper(steps - 1, arr) + helper(steps - 2, arr) + helper(steps - 3, arr);
